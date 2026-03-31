@@ -35,12 +35,20 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
-        <script src="data/3857_pointskepler_ready_map_1.js"></script>
-        <script src="data/Buffered_2.js"></script>
+        <script src="data/NoDataPoints_1.js"></script>
+        <script src="data/NoDataRadius_2.js"></script>
+        <script src="data/HeavyDutyPoints_3.js"></script>
+        <script src="data/HeavyDutyRadius_4.js"></script>
+        <script src="data/AutomotivePoints_5.js"></script>
+        <script src="data/AutomotiveRadius_6.js"></script>
+        <script src="data/Under5Points_7.js"></script>
+        <script src="data/Under5Radius_8.js"></script>
+        <script src="data/Over5Points_9.js"></script>
+        <script src="data/Over5Radius_10.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[27.225329415379075,-123.0008015412672],[47.10732860609543,-83.49572817651101]]);
+        }).fitBounds([[17.396909307391955,-139.61315406208868],[56.123267216335485,-60.60300733257727]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -124,19 +132,28 @@
         });
         layer_Positron_0;
         map.addLayer(layer_Positron_0);
-        function pop_3857_pointskepler_ready_map_1(feature, layer) {
+        function pop_NoDataPoints_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['lat'] !== null ? autolinker.link(String(feature.properties['lat']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['lon'] !== null ? autolinker.link(String(feature.properties['lon']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['inspections'] !== null ? autolinker.link(String(feature.properties['inspections']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -146,9 +163,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_3857_pointskepler_ready_map_1_0() {
+        function style_NoDataPoints_1_0() {
             return {
-                pane: 'pane_3857_pointskepler_ready_map_1',
+                pane: 'pane_NoDataPoints_1',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -158,43 +175,52 @@
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(125,139,143,1.0)',
+                fillColor: 'rgba(241,196,15,1.0)',
                 interactive: true,
             }
         }
-        map.createPane('pane_3857_pointskepler_ready_map_1');
-        map.getPane('pane_3857_pointskepler_ready_map_1').style.zIndex = 401;
-        map.getPane('pane_3857_pointskepler_ready_map_1').style['mix-blend-mode'] = 'normal';
-        var layer_3857_pointskepler_ready_map_1 = new L.geoJson(json_3857_pointskepler_ready_map_1, {
+        map.createPane('pane_NoDataPoints_1');
+        map.getPane('pane_NoDataPoints_1').style.zIndex = 401;
+        map.getPane('pane_NoDataPoints_1').style['mix-blend-mode'] = 'normal';
+        var layer_NoDataPoints_1 = new L.geoJson(json_NoDataPoints_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_3857_pointskepler_ready_map_1',
-            layerName: 'layer_3857_pointskepler_ready_map_1',
-            pane: 'pane_3857_pointskepler_ready_map_1',
-            onEachFeature: pop_3857_pointskepler_ready_map_1,
+            dataVar: 'json_NoDataPoints_1',
+            layerName: 'layer_NoDataPoints_1',
+            pane: 'pane_NoDataPoints_1',
+            onEachFeature: pop_NoDataPoints_1,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_3857_pointskepler_ready_map_1_0(feature));
+                return L.circleMarker(latlng, style_NoDataPoints_1_0(feature));
             },
         });
-        bounds_group.addLayer(layer_3857_pointskepler_ready_map_1);
-        map.addLayer(layer_3857_pointskepler_ready_map_1);
-        function pop_Buffered_2(feature, layer) {
+        bounds_group.addLayer(layer_NoDataPoints_1);
+        map.addLayer(layer_NoDataPoints_1);
+        function pop_NoDataRadius_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['lat'] !== null ? autolinker.link(String(feature.properties['lat']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['lon'] !== null ? autolinker.link(String(feature.properties['lon']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['inspections'] !== null ? autolinker.link(String(feature.properties['inspections']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -203,15 +229,10 @@
 			});
 			layer.bindPopup(content, { maxHeight: 400 });
         }
-        function style_Buffered_2_0(feature) {
-            var context = {
-                feature: feature,
-                variables: {}
-            };
-            // Start of if blocks and style check logic
-            if (exp_Buffered_2rule0_eval_expression(context)) {
-                  return {
-                pane: 'pane_Buffered_2',
+
+        function style_NoDataRadius_2_0() {
+            return {
+                pane: 'pane_NoDataRadius_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -220,46 +241,548 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(19,112,230,0.30196078431372547)',
+                fillColor: 'rgba(241,196,15,0.30196078431372547)',
                 interactive: true,
-            };
-                }
-                else if (exp_Buffered_2rule1_eval_expression(context)) {
-                  return {
-                pane: 'pane_Buffered_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(206,255,20,0.6)',
-                interactive: true,
-            };
-                }
-            else {
-                return {fill: false, stroke: false};
             }
         }
-        map.createPane('pane_Buffered_2');
-        map.getPane('pane_Buffered_2').style.zIndex = 402;
-        map.getPane('pane_Buffered_2').style['mix-blend-mode'] = 'normal';
-        var layer_Buffered_2 = new L.geoJson(json_Buffered_2, {
+        map.createPane('pane_NoDataRadius_2');
+        map.getPane('pane_NoDataRadius_2').style.zIndex = 402;
+        map.getPane('pane_NoDataRadius_2').style['mix-blend-mode'] = 'normal';
+        var layer_NoDataRadius_2 = new L.geoJson(json_NoDataRadius_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Buffered_2',
-            layerName: 'layer_Buffered_2',
-            pane: 'pane_Buffered_2',
-            onEachFeature: pop_Buffered_2,
-            style: style_Buffered_2_0,
+            dataVar: 'json_NoDataRadius_2',
+            layerName: 'layer_NoDataRadius_2',
+            pane: 'pane_NoDataRadius_2',
+            onEachFeature: pop_NoDataRadius_2,
+            style: style_NoDataRadius_2_0,
         });
-        bounds_group.addLayer(layer_Buffered_2);
-        map.addLayer(layer_Buffered_2);
+        bounds_group.addLayer(layer_NoDataRadius_2);
+        map.addLayer(layer_NoDataRadius_2);
+        function pop_HeavyDutyPoints_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_HeavyDutyPoints_3_0() {
+            return {
+                pane: 'pane_HeavyDutyPoints_3',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,204,113,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_HeavyDutyPoints_3');
+        map.getPane('pane_HeavyDutyPoints_3').style.zIndex = 403;
+        map.getPane('pane_HeavyDutyPoints_3').style['mix-blend-mode'] = 'normal';
+        var layer_HeavyDutyPoints_3 = new L.geoJson(json_HeavyDutyPoints_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_HeavyDutyPoints_3',
+            layerName: 'layer_HeavyDutyPoints_3',
+            pane: 'pane_HeavyDutyPoints_3',
+            onEachFeature: pop_HeavyDutyPoints_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_HeavyDutyPoints_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_HeavyDutyPoints_3);
+        map.addLayer(layer_HeavyDutyPoints_3);
+        function pop_HeavyDutyRadius_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_HeavyDutyRadius_4_0() {
+            return {
+                pane: 'pane_HeavyDutyRadius_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(46,204,113,0.30196078431372547)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_HeavyDutyRadius_4');
+        map.getPane('pane_HeavyDutyRadius_4').style.zIndex = 404;
+        map.getPane('pane_HeavyDutyRadius_4').style['mix-blend-mode'] = 'normal';
+        var layer_HeavyDutyRadius_4 = new L.geoJson(json_HeavyDutyRadius_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_HeavyDutyRadius_4',
+            layerName: 'layer_HeavyDutyRadius_4',
+            pane: 'pane_HeavyDutyRadius_4',
+            onEachFeature: pop_HeavyDutyRadius_4,
+            style: style_HeavyDutyRadius_4_0,
+        });
+        bounds_group.addLayer(layer_HeavyDutyRadius_4);
+        map.addLayer(layer_HeavyDutyRadius_4);
+        function pop_AutomotivePoints_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_AutomotivePoints_5_0() {
+            return {
+                pane: 'pane_AutomotivePoints_5',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(52,152,219,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_AutomotivePoints_5');
+        map.getPane('pane_AutomotivePoints_5').style.zIndex = 405;
+        map.getPane('pane_AutomotivePoints_5').style['mix-blend-mode'] = 'normal';
+        var layer_AutomotivePoints_5 = new L.geoJson(json_AutomotivePoints_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_AutomotivePoints_5',
+            layerName: 'layer_AutomotivePoints_5',
+            pane: 'pane_AutomotivePoints_5',
+            onEachFeature: pop_AutomotivePoints_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_AutomotivePoints_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_AutomotivePoints_5);
+        map.addLayer(layer_AutomotivePoints_5);
+        function pop_AutomotiveRadius_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_AutomotiveRadius_6_0() {
+            return {
+                pane: 'pane_AutomotiveRadius_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(52,152,219,0.30196078431372547)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_AutomotiveRadius_6');
+        map.getPane('pane_AutomotiveRadius_6').style.zIndex = 406;
+        map.getPane('pane_AutomotiveRadius_6').style['mix-blend-mode'] = 'normal';
+        var layer_AutomotiveRadius_6 = new L.geoJson(json_AutomotiveRadius_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_AutomotiveRadius_6',
+            layerName: 'layer_AutomotiveRadius_6',
+            pane: 'pane_AutomotiveRadius_6',
+            onEachFeature: pop_AutomotiveRadius_6,
+            style: style_AutomotiveRadius_6_0,
+        });
+        bounds_group.addLayer(layer_AutomotiveRadius_6);
+        map.addLayer(layer_AutomotiveRadius_6);
+        function pop_Under5Points_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Under5Points_7_0() {
+            return {
+                pane: 'pane_Under5Points_7',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(138,43,226,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Under5Points_7');
+        map.getPane('pane_Under5Points_7').style.zIndex = 407;
+        map.getPane('pane_Under5Points_7').style['mix-blend-mode'] = 'normal';
+        var layer_Under5Points_7 = new L.geoJson(json_Under5Points_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Under5Points_7',
+            layerName: 'layer_Under5Points_7',
+            pane: 'pane_Under5Points_7',
+            onEachFeature: pop_Under5Points_7,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Under5Points_7_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Under5Points_7);
+        map.addLayer(layer_Under5Points_7);
+        function pop_Under5Radius_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Under5Radius_8_0() {
+            return {
+                pane: 'pane_Under5Radius_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(138,43,226,0.30196078431372547)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Under5Radius_8');
+        map.getPane('pane_Under5Radius_8').style.zIndex = 408;
+        map.getPane('pane_Under5Radius_8').style['mix-blend-mode'] = 'normal';
+        var layer_Under5Radius_8 = new L.geoJson(json_Under5Radius_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Under5Radius_8',
+            layerName: 'layer_Under5Radius_8',
+            pane: 'pane_Under5Radius_8',
+            onEachFeature: pop_Under5Radius_8,
+            style: style_Under5Radius_8_0,
+        });
+        bounds_group.addLayer(layer_Under5Radius_8);
+        map.addLayer(layer_Under5Radius_8);
+        function pop_Over5Points_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Over5Points_9_0() {
+            return {
+                pane: 'pane_Over5Points_9',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(194,106,0,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Over5Points_9');
+        map.getPane('pane_Over5Points_9').style.zIndex = 409;
+        map.getPane('pane_Over5Points_9').style['mix-blend-mode'] = 'normal';
+        var layer_Over5Points_9 = new L.geoJson(json_Over5Points_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Over5Points_9',
+            layerName: 'layer_Over5Points_9',
+            pane: 'pane_Over5Points_9',
+            onEachFeature: pop_Over5Points_9,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Over5Points_9_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Over5Points_9);
+        map.addLayer(layer_Over5Points_9);
+        function pop_Over5Radius_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['First Name'] !== null ? autolinker.link(String(feature.properties['First Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Last Name'] !== null ? autolinker.link(String(feature.properties['Last Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Latitude'] !== null ? autolinker.link(String(feature.properties['Latitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Longitude'] !== null ? autolinker.link(String(feature.properties['Longitude']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Inspector Rating'] !== null ? autolinker.link(String(feature.properties['Inspector Rating']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Scanner'] !== null ? autolinker.link(String(feature.properties['Scanner']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Completed'] !== null ? autolinker.link(String(feature.properties['Completed']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Over5Radius_10_0() {
+            return {
+                pane: 'pane_Over5Radius_10',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,140,0,0.6)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Over5Radius_10');
+        map.getPane('pane_Over5Radius_10').style.zIndex = 410;
+        map.getPane('pane_Over5Radius_10').style['mix-blend-mode'] = 'normal';
+        var layer_Over5Radius_10 = new L.geoJson(json_Over5Radius_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Over5Radius_10',
+            layerName: 'layer_Over5Radius_10',
+            pane: 'pane_Over5Radius_10',
+            onEachFeature: pop_Over5Radius_10,
+            style: style_Over5Radius_10_0,
+        });
+        bounds_group.addLayer(layer_Over5Radius_10);
+        map.addLayer(layer_Over5Radius_10);
         var overlaysTree = [
-            {label: 'Buffered<br /><table><tr><td style="text-align: center;"><img src="legend/Buffered_2_Rule10.png" /></td><td>Rule 1</td></tr><tr><td style="text-align: center;"><img src="legend/Buffered_2_Rule21.png" /></td><td>Rule 2</td></tr></table>', layer: layer_Buffered_2},
-            {label: '<img src="legend/3857_pointskepler_ready_map_1.png" /> 3857_points — kepler_ready_map', layer: layer_3857_pointskepler_ready_map_1},
+        {label: '<b>(Inspection) Over 5</b>', collapsed: true, selectAllCheckbox: true, children: [
+            {label: '<img src="legend/Over5Radius_10.png" /> Over 5 Radius', layer: layer_Over5Radius_10},
+            {label: '<img src="legend/Over5Points_9.png" /> Over 5 Points', layer: layer_Over5Points_9},]},
+        {label: '<b>(Inspection) Under 5</b>', collapsed: true, selectAllCheckbox: true, children: [
+            {label: '<img src="legend/Under5Radius_8.png" /> Under 5 Radius', layer: layer_Under5Radius_8},
+            {label: '<img src="legend/Under5Points_7.png" /> Under 5 Points', layer: layer_Under5Points_7},]},
+        {label: '<b>(Scanner) Automotive</b>', collapsed: true, selectAllCheckbox: true, children: [
+            {label: '<img src="legend/AutomotiveRadius_6.png" /> Automotive Radius', layer: layer_AutomotiveRadius_6},
+            {label: '<img src="legend/AutomotivePoints_5.png" /> Automotive Points', layer: layer_AutomotivePoints_5},]},
+        {label: '<b>(Scanner) Heavy Duty</b>', collapsed: true, selectAllCheckbox: true, children: [
+            {label: '<img src="legend/HeavyDutyRadius_4.png" /> Heavy Duty Radius', layer: layer_HeavyDutyRadius_4},
+            {label: '<img src="legend/HeavyDutyPoints_3.png" /> Heavy Duty Points', layer: layer_HeavyDutyPoints_3},]},
+        {label: '<b>(Scanner) No Data</b>', collapsed: true, selectAllCheckbox: true, children: [
+            {label: '<img src="legend/NoDataRadius_2.png" /> No Data Radius', layer: layer_NoDataRadius_2},
+            {label: '<img src="legend/NoDataPoints_1.png" /> No Data Points', layer: layer_NoDataPoints_1},]},
             {label: "Positron", layer: layer_Positron_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
@@ -268,9 +791,59 @@
             //openedSymbol: '&#8863; &#x1f5c1;',
             //collapseAll: 'Collapse all',
             //expandAll: 'Expand all',
-            collapsed: true,
+            collapsed: false, 
         });
         lay.addTo(map);
+		document.addEventListener("DOMContentLoaded", function() {
+            // set new Layers List height which considers toggle icon
+            function newLayersListHeight() {
+                var layerScrollbarElement = document.querySelector('.leaflet-control-layers-scrollbar');
+                if (layerScrollbarElement) {
+                    var layersListElement = document.querySelector('.leaflet-control-layers-list');
+                    var originalHeight = layersListElement.style.height 
+                        || window.getComputedStyle(layersListElement).height;
+                    var newHeight = parseFloat(originalHeight) - 50;
+                    layersListElement.style.height = newHeight + 'px';
+                }
+            }
+            var isLayersListExpanded = true;
+            var controlLayersElement = document.querySelector('.leaflet-control-layers');
+            var toggleLayerControl = document.querySelector('.leaflet-control-layers-toggle');
+            // toggle Collapsed/Expanded and apply new Layers List height
+            toggleLayerControl.addEventListener('click', function() {
+                if (isLayersListExpanded) {
+                    controlLayersElement.classList.remove('leaflet-control-layers-expanded');
+                } else {
+                    controlLayersElement.classList.add('leaflet-control-layers-expanded');
+                }
+                isLayersListExpanded = !isLayersListExpanded;
+                newLayersListHeight()
+            });	
+			// apply new Layers List height if toggle layerstree
+			if (controlLayersElement) {
+				controlLayersElement.addEventListener('click', function(event) {
+					var toggleLayerHeaderPointer = event.target.closest('.leaflet-layerstree-header-pointer span');
+					if (toggleLayerHeaderPointer) {
+						newLayersListHeight();
+					}
+				});
+			}
+            // Collapsed/Expanded at Start to apply new height
+            setTimeout(function() {
+                toggleLayerControl.click();
+            }, 10);
+            setTimeout(function() {
+                toggleLayerControl.click();
+            }, 10);
+            // Collapsed touch/small screen
+            var isSmallScreen = window.innerWidth < 650;
+            if (isSmallScreen) {
+                setTimeout(function() {
+                    controlLayersElement.classList.remove('leaflet-control-layers-expanded');
+                    isLayersListExpanded = !isLayersListExpanded;
+                }, 500);
+            }  
+        });       
         setBounds();
         </script>        
     </body>

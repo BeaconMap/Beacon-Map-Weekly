@@ -754,30 +754,3 @@ function fnc__specialcol_(values, context) {
 function fnc_project_color(values, context) {
     return false;
 };
-
-
-
-function exp_Buffered_2rule0_eval_expression(context) {
-    // inspections < 5
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return (feature.properties['inspections']  < 5);
-    } else {
-        return (feature['inspections']  < 5);
-    }
-}
-
-
-function exp_Buffered_2rule1_eval_expression(context) {
-    // inspections >= 5
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return (feature.properties['inspections']  >= 5);
-    } else {
-        return (feature['inspections']  >= 5);
-    }
-}

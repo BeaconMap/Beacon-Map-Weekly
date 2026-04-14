@@ -1,6 +1,26 @@
 <!doctype html>
 <html lang="en">
     <head>
+<script>
+document.documentElement.style.display = "none";
+
+window.onload = function() {
+    var password = "beacon123";
+    var user = prompt("Enter password:");
+
+    if (user === null) {
+        window.location.href = "about:blank";
+        return;
+    }
+
+    if (user === password) {
+        document.documentElement.style.display = "block";
+    } else {
+        alert("Wrong password");
+        window.location.href = "about:blank";
+    }
+};
+</script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">

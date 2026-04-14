@@ -1,15 +1,6 @@
 <!doctype html>
 <html lang="en">
     <head>
-<script>
-var password = "beacon123"; // change this
-
-var user = prompt("Enter password:");
-if (user !== password) {
-    alert("Wrong password");
-    window.location.reload();
-}
-</script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
@@ -57,7 +48,7 @@ if (user !== password) {
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[17.396909307391955,-139.61315406208868],[56.123267216335485,-60.60300733257727]]);
+        }).fitBounds([[-3.4418139066375333,-35.99863452154815],[67.2083867904003,174.88360563524154]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -133,7 +124,7 @@ if (user !== password) {
         var layer_Positron_0 = L.tileLayer('https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
             pane: 'pane_Positron_0',
             opacity: 1.0,
-            attribution: '<a href="https://cartodb.com/basemaps/">Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.</a>',
+            attribution: '<a href="https://cartodb.com/basemaps/">Map tiles by CartoDB, under CC BY 4.0. Data by OpenStreetMap, under ODbL.</a>',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
@@ -184,7 +175,7 @@ if (user !== password) {
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(241,196,15,1.0)',
+                fillColor: 'rgba(250,255,0,1.0)',
                 interactive: true,
             }
         }
@@ -250,7 +241,7 @@ if (user !== password) {
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(241,196,15,0.30196078431372547)',
+                fillColor: 'rgba(250,255,0,0.30196078431372547)',
                 interactive: true,
             }
         }
@@ -311,7 +302,7 @@ if (user !== password) {
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(46,204,113,1.0)',
+                fillColor: 'rgba(0,255,107,1.0)',
                 interactive: true,
             }
         }
@@ -377,7 +368,7 @@ if (user !== password) {
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(46,204,113,0.30196078431372547)',
+                fillColor: 'rgba(0,255,107,0.30196078431372547)',
                 interactive: true,
             }
         }
@@ -438,7 +429,7 @@ if (user !== password) {
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(52,152,219,1.0)',
+                fillColor: 'rgba(0,243,255,1.0)',
                 interactive: true,
             }
         }
@@ -504,7 +495,7 @@ if (user !== password) {
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(52,152,219,0.30196078431372547)',
+                fillColor: 'rgba(0,243,255,0.30196078431372547)',
                 interactive: true,
             }
         }
@@ -565,7 +556,7 @@ if (user !== password) {
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(138,43,226,1.0)',
+                fillColor: 'rgba(164,9,154,1.0)',
                 interactive: true,
             }
         }
@@ -631,7 +622,7 @@ if (user !== password) {
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(138,43,226,0.30196078431372547)',
+                fillColor: 'rgba(164,9,154,0.30196078431372547)',
                 interactive: true,
             }
         }
@@ -692,7 +683,7 @@ if (user !== password) {
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(194,106,0,1.0)',
+                fillColor: 'rgba(255,115,0,1.0)',
                 interactive: true,
             }
         }
@@ -758,7 +749,7 @@ if (user !== password) {
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,140,0,0.6)',
+                fillColor: 'rgba(255,115,0,0.30196078431372547)',
                 interactive: true,
             }
         }
@@ -777,19 +768,19 @@ if (user !== password) {
         bounds_group.addLayer(layer_Over5Radius_10);
         map.addLayer(layer_Over5Radius_10);
         var overlaysTree = [
-        {label: '<b>(Inspection) Over 5</b>', collapsed: true, selectAllCheckbox: true, children: [
+        {label: '<b>(Inspection) Over 5</b>',  selectAllCheckbox: true, children: [
             {label: '<img src="legend/Over5Radius_10.png" /> Over 5 Radius', layer: layer_Over5Radius_10},
             {label: '<img src="legend/Over5Points_9.png" /> Over 5 Points', layer: layer_Over5Points_9},]},
-        {label: '<b>(Inspection) Under 5</b>', collapsed: true, selectAllCheckbox: true, children: [
+        {label: '<b>(Inspection) Under 5</b>',  selectAllCheckbox: true, children: [
             {label: '<img src="legend/Under5Radius_8.png" /> Under 5 Radius', layer: layer_Under5Radius_8},
             {label: '<img src="legend/Under5Points_7.png" /> Under 5 Points', layer: layer_Under5Points_7},]},
-        {label: '<b>(Scanner) Automotive</b>', collapsed: true, selectAllCheckbox: true, children: [
+        {label: '<b>(Scanner) Automotive</b>',  selectAllCheckbox: true, children: [
             {label: '<img src="legend/AutomotiveRadius_6.png" /> Automotive Radius', layer: layer_AutomotiveRadius_6},
             {label: '<img src="legend/AutomotivePoints_5.png" /> Automotive Points', layer: layer_AutomotivePoints_5},]},
-        {label: '<b>(Scanner) Heavy Duty</b>', collapsed: true, selectAllCheckbox: true, children: [
+        {label: '<b>(Scanner) Heavy Duty</b>',  selectAllCheckbox: true, children: [
             {label: '<img src="legend/HeavyDutyRadius_4.png" /> Heavy Duty Radius', layer: layer_HeavyDutyRadius_4},
             {label: '<img src="legend/HeavyDutyPoints_3.png" /> Heavy Duty Points', layer: layer_HeavyDutyPoints_3},]},
-        {label: '<b>(Scanner) No Data</b>', collapsed: true, selectAllCheckbox: true, children: [
+        {label: '<b>(Scanner) No Data</b>',  selectAllCheckbox: true, children: [
             {label: '<img src="legend/NoDataRadius_2.png" /> No Data Radius', layer: layer_NoDataRadius_2},
             {label: '<img src="legend/NoDataPoints_1.png" /> No Data Points', layer: layer_NoDataPoints_1},]},
             {label: "Positron", layer: layer_Positron_0},]

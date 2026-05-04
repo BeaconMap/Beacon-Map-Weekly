@@ -28,12 +28,139 @@
             padding: 0;
             margin: 0;
         }
+
+        /* ── Stats Counter Panel ── */
+        #stats-panel {
+            position: absolute;
+            top: 80px; /* below zoom control */
+            left: 10px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            padding: 10px 14px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            min-width: 210px;
+            border: 1px solid #ccc;
+        }
+        #stats-panel h4 {
+            margin: 0 0 8px 0;
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        #stats-panel .stats-section-title {
+            font-weight: bold;
+            color: #555;
+            margin: 7px 0 3px 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        #stats-panel .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2px 0;
+            border-bottom: 1px dotted #eee;
+        }
+        #stats-panel .stat-row:last-child {
+            border-bottom: none;
+        }
+        #stats-panel .stat-label {
+            color: #444;
+            flex: 1;
+        }
+        #stats-panel .stat-badge {
+            font-weight: bold;
+            font-size: 12px;
+            border-radius: 10px;
+            padding: 1px 8px;
+            color: #fff;
+            min-width: 36px;
+            text-align: center;
+        }
+        .badge-green  { background-color: #2e7d32; }
+        .badge-red    { background-color: #c62828; }
+        .badge-blue   { background-color: #1565c0; }
+        .badge-orange { background-color: #e65100; }
+        .badge-gray   { background-color: #757575; }
+        .badge-purple { background-color: #6a1b9a; }
+        .badge-teal   { background-color: #00695c; }
+
+        /* toggle button */
+        #stats-toggle {
+            position: absolute;
+            top: 80px;
+            left: 10px;
+            z-index: 1001;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 11px;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
         </style>
         <title></title>
     </head>
     <body>
         <div id="map">
         </div>
+
+        <!-- Stats Counter Panel -->
+        <button id="stats-toggle" onclick="document.getElementById('stats-panel').style.display='block'; this.style.display='none';">📊 Stats</button>
+
+        <div id="stats-panel">
+            <h4>📊 Inspection Summary</h4>
+
+            <div class="stats-section-title">Inspections</div>
+            <div class="stat-row">
+                <span class="stat-label">✅ Completed</span>
+                <span class="stat-badge badge-green">652</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">❌ Canceled</span>
+                <span class="stat-badge badge-red">246</span>
+            </div>
+
+            <div class="stats-section-title">Inspectors by Count</div>
+            <div class="stat-row">
+                <span class="stat-label">≥ 5 Inspections</span>
+                <span class="stat-badge badge-blue">38</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">&lt; 5 Inspections</span>
+                <span class="stat-badge badge-orange">858</span>
+            </div>
+
+            <div class="stats-section-title">Inspectors by Type</div>
+            <div class="stat-row">
+                <span class="stat-label">🚗 Automotive</span>
+                <span class="stat-badge badge-teal">179</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">🚛 Heavy Duty</span>
+                <span class="stat-badge badge-purple">182</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">❓ No Data</span>
+                <span class="stat-badge badge-gray">497</span>
+            </div>
+
+            <div style="text-align:right; margin-top:6px;">
+                <span onclick="document.getElementById('stats-panel').style.display='none'; document.getElementById('stats-toggle').style.display='block';"
+                      style="cursor:pointer; font-size:10px; color:#888; text-decoration:underline;">Hide</span>
+            </div>
+        </div>
+
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
         <script src="js/L.Control.Layers.Tree.min.js"></script>

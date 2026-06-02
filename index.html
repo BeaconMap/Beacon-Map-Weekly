@@ -41,23 +41,55 @@
   #pw-btn:hover { background: #3a3adc; }
   #pw-error { color: #e74c3c; font-size: 12px; margin-top: 10px; display: none; }
 
-  /* LEFT PANEL */
-  #summary {
-    position: absolute; top: 12px; left: 12px; z-index: 1000;
+  /* SHARED PANEL STYLES */
+  .panel {
+    position: absolute; z-index: 1000;
     background: rgba(15,15,30,0.92); color: #e8e8f0;
-    border-radius: 10px; padding: 14px 16px; min-width: 230px;
+    border-radius: 10px; padding: 14px 16px; min-width: 235px;
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     max-height: calc(100vh - 24px); overflow-y: auto;
   }
-  #summary h3 {
-    font-size: 13px; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; color: #9b9bc8; margin-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;
+  .panel-main-header {
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; user-select: none;
   }
+  .panel-main-header h3 {
+    font-size: 13px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: #9b9bc8; margin: 0;
+  }
+  .panel-main-body {
+    overflow: hidden; max-height: 0; transition: max-height 0.3s ease;
+  }
+  .panel-main-body.open {
+    max-height: 800px; margin-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;
+  }
+  .panel-arrow {
+    font-size: 10px; color: #6e6e9a; transition: transform 0.2s; margin-left: 6px;
+  }
+  .panel-arrow.open { transform: rotate(180deg); }
+
+  /* SUB SECTION */
+  .sub-header {
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; user-select: none; padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .sub-header:hover { opacity: 0.85; }
+  .sub-header span {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase; color: #b0b0d8;
+  }
+  .sub-body {
+    overflow: hidden; max-height: 0; transition: max-height 0.25s ease; padding-left: 4px;
+  }
+  .sub-body.open { max-height: 300px; }
+
+  /* COUNTER ROWS */
   .counter-row {
     display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 7px; font-size: 12.5px;
+    margin: 6px 0; font-size: 12.5px; padding-left: 2px;
   }
   .counter-label { display: flex; align-items: center; gap: 7px; }
   .dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
@@ -65,10 +97,22 @@
     background: rgba(255,255,255,0.12); border-radius: 12px;
     padding: 2px 9px; font-size: 12px; font-weight: 700; min-width: 36px; text-align: center;
   }
-  .section-title {
-    font-size: 10px; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; color: #6e6e9a; margin: 10px 0 6px;
+
+  /* LAYER ROWS */
+  .layer-row {
+    display: flex; align-items: center; gap: 8px;
+    margin: 6px 0; cursor: pointer; user-select: none;
   }
+  .layer-row input { accent-color: #4a4af0; cursor: pointer; }
+  .layer-row label {
+    display: flex; align-items: center; gap: 8px;
+    cursor: pointer; font-size: 12px; flex: 1;
+  }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* POSITIONS */
+  #summary { top: 12px; left: 12px; }
+  #legend  { top: 12px; right: 12px; }
 
   /* TIME SLICER */
   #time-slicer {
@@ -86,57 +130,6 @@
   }
   .slice-btn:hover { background: rgba(255,255,255,0.08); color: #fff; }
   .slice-btn.active { background: #4a4af0; color: #fff; font-weight: 600; }
-
-  /* RIGHT PANEL */
-  #legend {
-    position: absolute; top: 12px; right: 12px; z-index: 1000;
-    background: rgba(15,15,30,0.92); color: #e8e8f0;
-    border-radius: 10px; padding: 14px 16px; min-width: 220px;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    max-height: calc(100vh - 24px); overflow-y: auto;
-  }
-  #legend h3 {
-    font-size: 13px; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; color: #9b9bc8; margin-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;
-  }
-
-  /* COLLAPSIBLE SECTIONS */
-  .section-header {
-    display: flex; align-items: center; justify-content: space-between;
-    cursor: pointer; padding: 7px 0; margin-bottom: 2px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    user-select: none;
-  }
-  .section-header:hover { opacity: 0.85; }
-  .section-header-left { display: flex; align-items: center; gap: 7px; }
-  .section-header span {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
-    text-transform: uppercase; color: #b0b0d8;
-  }
-  .section-arrow {
-    font-size: 10px; color: #6e6e9a;
-    transition: transform 0.2s;
-  }
-  .section-arrow.open { transform: rotate(180deg); }
-  .section-body {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.25s ease;
-    padding-left: 4px;
-  }
-  .section-body.open { max-height: 300px; }
-  .layer-row {
-    display: flex; align-items: center; gap: 8px;
-    margin: 6px 0; cursor: pointer; user-select: none;
-  }
-  .layer-row input { accent-color: #4a4af0; cursor: pointer; }
-  .layer-row label {
-    display: flex; align-items: center; gap: 8px;
-    cursor: pointer; font-size: 12px; flex: 1;
-  }
-  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -153,26 +146,52 @@
 </div>
 
 <!-- LEFT: Summary Panel -->
-<div id="summary">
-  <h3>📊 Inspection Summary</h3>
+<div id="summary" class="panel">
+  <div class="panel-main-header" onclick="toggleMain('summary-body','summary-arrow')">
+    <h3>📊 Inspection Summary</h3>
+    <span class="panel-arrow" id="summary-arrow">▼</span>
+  </div>
+  <div class="panel-main-body" id="summary-body">
 
-  <div class="section-title">Inspections</div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#2ecc71"></span>Completed</span><span class="badge" id="cnt-completed">0</span></div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#e74c3c"></span>Canceled</span><span class="badge" id="cnt-canceled">0</span></div>
+    <div class="sub-header" onclick="toggleSub('sub-inspections','sarrow-inspections')">
+      <span>📋 Inspections</span>
+      <span class="panel-arrow open" id="sarrow-inspections">▼</span>
+    </div>
+    <div class="sub-body open" id="sub-inspections">
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#2ecc71"></span>Completed</span><span class="badge" id="cnt-completed">0</span></div>
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#e74c3c"></span>Canceled</span><span class="badge" id="cnt-canceled">0</span></div>
+    </div>
 
-  <div class="section-title">Inspector Count</div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#f39c12"></span>Over 5</span><span class="badge" id="cnt-over5">0</span></div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#9b59b6"></span>1 – 5</span><span class="badge" id="cnt-1to5">0</span></div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#1abc9c"></span>0 Inspections</span><span class="badge" id="cnt-zero">0</span></div>
+    <div class="sub-header" onclick="toggleSub('sub-count','sarrow-count')">
+      <span>🔢 Inspector Count</span>
+      <span class="panel-arrow open" id="sarrow-count">▼</span>
+    </div>
+    <div class="sub-body open" id="sub-count">
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#f39c12"></span>Over 5</span><span class="badge" id="cnt-over5">0</span></div>
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#9b59b6"></span>1 – 5</span><span class="badge" id="cnt-1to5">0</span></div>
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#1abc9c"></span>0 Inspections</span><span class="badge" id="cnt-zero">0</span></div>
+    </div>
 
-  <div class="section-title">Scanner Type</div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#5dade2"></span>Automotive</span><span class="badge" id="cnt-auto">0</span></div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#a0522d"></span>Heavy Duty</span><span class="badge" id="cnt-heavy">0</span></div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#f1c40f"></span>No Data</span><span class="badge" id="cnt-nodata">0</span></div>
+    <div class="sub-header" onclick="toggleSub('sub-scanner','sarrow-scanner')">
+      <span>📡 Scanner Type</span>
+      <span class="panel-arrow open" id="sarrow-scanner">▼</span>
+    </div>
+    <div class="sub-body open" id="sub-scanner">
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#5dade2"></span>Automotive</span><span class="badge" id="cnt-auto">0</span></div>
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#a0522d"></span>Heavy Duty</span><span class="badge" id="cnt-heavy">0</span></div>
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#f1c40f"></span>No Data</span><span class="badge" id="cnt-nodata">0</span></div>
+    </div>
 
-  <div class="section-title">Last Login</div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#48c9b0"></span>Active (90 Days)</span><span class="badge" id="cnt-active">0</span></div>
-  <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#e67e73"></span>Inactive (90+ Days)</span><span class="badge" id="cnt-inactive">0</span></div>
+    <div class="sub-header" onclick="toggleSub('sub-login','sarrow-login')">
+      <span>🔐 Last Login</span>
+      <span class="panel-arrow open" id="sarrow-login">▼</span>
+    </div>
+    <div class="sub-body open" id="sub-login">
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#48c9b0"></span>Active (90 Days)</span><span class="badge" id="cnt-active">0</span></div>
+      <div class="counter-row"><span class="counter-label"><span class="dot" style="background:#e67e73"></span>Inactive (90+ Days)</span><span class="badge" id="cnt-inactive">0</span></div>
+    </div>
+
+  </div>
 </div>
 
 <!-- CENTER: Time Slicer -->
@@ -184,58 +203,52 @@
   <button class="slice-btn active" data-days="0">All Time</button>
 </div>
 
-<!-- RIGHT: Collapsible Layer Toggles -->
-<div id="legend">
-  <h3>🗺 Layers</h3>
+<!-- RIGHT: Layers Panel -->
+<div id="legend" class="panel">
+  <div class="panel-main-header" onclick="toggleMain('legend-body','legend-arrow')">
+    <h3>🗺 Layers</h3>
+    <span class="panel-arrow" id="legend-arrow">▼</span>
+  </div>
+  <div class="panel-main-body" id="legend-body">
 
-  <!-- Inspections -->
-  <div class="section-header" onclick="toggleSection('sec-inspections')">
-    <div class="section-header-left">
+    <div class="sub-header" onclick="toggleSub('sec-inspections','larrow-inspections')">
       <span>📋 Inspections</span>
+      <span class="panel-arrow open" id="larrow-inspections">▼</span>
     </div>
-    <span class="section-arrow open" id="arrow-sec-inspections">▼</span>
-  </div>
-  <div class="section-body open" id="sec-inspections">
-    <div class="layer-row"><input type="checkbox" id="tog-completed" checked/><label for="tog-completed"><span class="legend-dot" style="background:#2ecc71"></span>Completed</label></div>
-    <div class="layer-row"><input type="checkbox" id="tog-canceled" checked/><label for="tog-canceled"><span class="legend-dot" style="background:#e74c3c"></span>Canceled</label></div>
-  </div>
+    <div class="sub-body open" id="sec-inspections">
+      <div class="layer-row"><input type="checkbox" id="tog-completed" checked/><label for="tog-completed"><span class="legend-dot" style="background:#2ecc71"></span>Completed</label></div>
+      <div class="layer-row"><input type="checkbox" id="tog-canceled" checked/><label for="tog-canceled"><span class="legend-dot" style="background:#e74c3c"></span>Canceled</label></div>
+    </div>
 
-  <!-- Inspector Count -->
-  <div class="section-header" onclick="toggleSection('sec-count')">
-    <div class="section-header-left">
+    <div class="sub-header" onclick="toggleSub('sec-count','larrow-count')">
       <span>🔢 Inspector Count</span>
+      <span class="panel-arrow open" id="larrow-count">▼</span>
     </div>
-    <span class="section-arrow open" id="arrow-sec-count">▼</span>
-  </div>
-  <div class="section-body open" id="sec-count">
-    <div class="layer-row"><input type="checkbox" id="tog-over5" checked/><label for="tog-over5"><span class="legend-dot" style="background:#f39c12"></span>Over 5</label></div>
-    <div class="layer-row"><input type="checkbox" id="tog-1to5" checked/><label for="tog-1to5"><span class="legend-dot" style="background:#9b59b6"></span>1 – 5</label></div>
-    <div class="layer-row"><input type="checkbox" id="tog-zero" checked/><label for="tog-zero"><span class="legend-dot" style="background:#1abc9c"></span>0 Inspections</label></div>
-  </div>
+    <div class="sub-body open" id="sec-count">
+      <div class="layer-row"><input type="checkbox" id="tog-over5" checked/><label for="tog-over5"><span class="legend-dot" style="background:#f39c12"></span>Over 5</label></div>
+      <div class="layer-row"><input type="checkbox" id="tog-1to5" checked/><label for="tog-1to5"><span class="legend-dot" style="background:#9b59b6"></span>1 – 5</label></div>
+      <div class="layer-row"><input type="checkbox" id="tog-zero" checked/><label for="tog-zero"><span class="legend-dot" style="background:#1abc9c"></span>0 Inspections</label></div>
+    </div>
 
-  <!-- Scanner Type -->
-  <div class="section-header" onclick="toggleSection('sec-scanner')">
-    <div class="section-header-left">
+    <div class="sub-header" onclick="toggleSub('sec-scanner','larrow-scanner')">
       <span>📡 Scanner Type</span>
+      <span class="panel-arrow open" id="larrow-scanner">▼</span>
     </div>
-    <span class="section-arrow open" id="arrow-sec-scanner">▼</span>
-  </div>
-  <div class="section-body open" id="sec-scanner">
-    <div class="layer-row"><input type="checkbox" id="tog-auto" checked/><label for="tog-auto"><span class="legend-dot" style="background:#5dade2"></span>Automotive</label></div>
-    <div class="layer-row"><input type="checkbox" id="tog-heavy" checked/><label for="tog-heavy"><span class="legend-dot" style="background:#a0522d"></span>Heavy Duty</label></div>
-    <div class="layer-row"><input type="checkbox" id="tog-nodata" checked/><label for="tog-nodata"><span class="legend-dot" style="background:#f1c40f"></span>No Data</label></div>
-  </div>
+    <div class="sub-body open" id="sec-scanner">
+      <div class="layer-row"><input type="checkbox" id="tog-auto" checked/><label for="tog-auto"><span class="legend-dot" style="background:#5dade2"></span>Automotive</label></div>
+      <div class="layer-row"><input type="checkbox" id="tog-heavy" checked/><label for="tog-heavy"><span class="legend-dot" style="background:#a0522d"></span>Heavy Duty</label></div>
+      <div class="layer-row"><input type="checkbox" id="tog-nodata" checked/><label for="tog-nodata"><span class="legend-dot" style="background:#f1c40f"></span>No Data</label></div>
+    </div>
 
-  <!-- Last Login -->
-  <div class="section-header" onclick="toggleSection('sec-login')">
-    <div class="section-header-left">
+    <div class="sub-header" onclick="toggleSub('sec-login','larrow-login')">
       <span>🔐 Last Login</span>
+      <span class="panel-arrow open" id="larrow-login">▼</span>
     </div>
-    <span class="section-arrow open" id="arrow-sec-login">▼</span>
-  </div>
-  <div class="section-body open" id="sec-login">
-    <div class="layer-row"><input type="checkbox" id="tog-active" checked/><label for="tog-active"><span class="legend-dot" style="background:#48c9b0"></span>Active (90 Days)</label></div>
-    <div class="layer-row"><input type="checkbox" id="tog-inactive" checked/><label for="tog-inactive"><span class="legend-dot" style="background:#e67e73"></span>Inactive (90+ Days)</label></div>
+    <div class="sub-body open" id="sec-login">
+      <div class="layer-row"><input type="checkbox" id="tog-active" checked/><label for="tog-active"><span class="legend-dot" style="background:#48c9b0"></span>Active (90 Days)</label></div>
+      <div class="layer-row"><input type="checkbox" id="tog-inactive" checked/><label for="tog-inactive"><span class="legend-dot" style="background:#e67e73"></span>Inactive (90+ Days)</label></div>
+    </div>
+
   </div>
 </div>
 
@@ -253,18 +266,17 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 const MILES_TO_METERS = 1609.34;
 const COLORS = {
   completed: '#2ecc71', canceled: '#e74c3c',
-  over5:     '#f39c12', to5:      '#9b59b6',
-  zero:      '#1abc9c', auto:     '#5dade2',
-  heavy:     '#a0522d', nodata:   '#f1c40f',
-  active:    '#48c9b0', inactive: '#e67e73'
+  over5: '#f39c12', to5: '#9b59b6', zero: '#1abc9c',
+  auto: '#5dade2', heavy: '#a0522d', nodata: '#f1c40f',
+  active: '#48c9b0', inactive: '#e67e73'
 };
 
 const groups = {
   completed: L.layerGroup().addTo(map), canceled: L.layerGroup().addTo(map),
-  over5:     L.layerGroup().addTo(map), to5:      L.layerGroup().addTo(map),
-  zero:      L.layerGroup().addTo(map), auto:     L.layerGroup().addTo(map),
-  heavy:     L.layerGroup().addTo(map), nodata:   L.layerGroup().addTo(map),
-  active:    L.layerGroup().addTo(map), inactive: L.layerGroup().addTo(map)
+  over5: L.layerGroup().addTo(map), to5: L.layerGroup().addTo(map),
+  zero: L.layerGroup().addTo(map), auto: L.layerGroup().addTo(map),
+  heavy: L.layerGroup().addTo(map), nodata: L.layerGroup().addTo(map),
+  active: L.layerGroup().addTo(map), inactive: L.layerGroup().addTo(map)
 };
 
 function parseDate(str) {
@@ -311,15 +323,13 @@ function buildLayers() {
     }
   });
 
-  const now = new Date();
   const cutoff90 = new Date();
-  cutoff90.setDate(now.getDate() - 90);
+  cutoff90.setDate(cutoff90.getDate() - 90);
 
   MAP_DATA.forEach(r => {
     if (!r.lat || !r.lon) return;
     const name = `${r.fname||''} ${r.lname||''}`.trim();
 
-    // Inspection count
     if (r.completed > 5) {
       addPoint(groups.over5, r.lat, r.lon, COLORS.over5, `<b>${name}</b><br>Inspections: ${r.completed}<br><i>Over 5</i>`);
       cntOver5++;
@@ -331,7 +341,6 @@ function buildLayers() {
       cntZero++;
     }
 
-    // Scanner
     if (r.scanner === 'Automotive') {
       addPoint(groups.auto, r.lat, r.lon, COLORS.auto, `<b>${name}</b><br>Scanner: Automotive`);
       cntAuto++;
@@ -343,20 +352,21 @@ function buildLayers() {
       cntNodata++;
     }
 
-    // Last Login
     if (r.last_login) {
       const loginDate = parseDate(r.last_login);
-      if (loginDate) {
-        if (loginDate >= cutoff90) {
-          addPoint(groups.active, r.lat, r.lon, COLORS.active,
-            `<b>${name}</b><br>Last Login: ${r.last_login}<br><i>Active (within 90 days)</i>`);
-          cntActive++;
-        } else {
-          addPoint(groups.inactive, r.lat, r.lon, COLORS.inactive,
-            `<b>${name}</b><br>Last Login: ${r.last_login}<br><i>Inactive (90+ days)</i>`);
-          cntInactive++;
-        }
+      if (loginDate && loginDate >= cutoff90) {
+        addPoint(groups.active, r.lat, r.lon, COLORS.active,
+          `<b>${name}</b><br>Last Login: ${r.last_login}<br><i>Active (within 90 days)</i>`);
+        cntActive++;
+      } else {
+        addPoint(groups.inactive, r.lat, r.lon, COLORS.inactive,
+          `<b>${name}</b><br>Last Login: ${r.last_login}<br><i>Inactive (90+ days)</i>`);
+        cntInactive++;
       }
+    } else {
+      addPoint(groups.inactive, r.lat, r.lon, COLORS.inactive,
+        `<b>${name}</b><br>Last Login: No Data<br><i>Inactive</i>`);
+      cntInactive++;
     }
   });
 
@@ -372,20 +382,21 @@ function buildLayers() {
   document.getElementById('cnt-inactive').textContent  = cntInactive;
 }
 
-// Collapsible sections
-function toggleSection(id) {
-  const body = document.getElementById(id);
-  const arrow = document.getElementById('arrow-' + id);
-  body.classList.toggle('open');
-  arrow.classList.toggle('open');
+function toggleMain(bodyId, arrowId) {
+  document.getElementById(bodyId).classList.toggle('open');
+  document.getElementById(arrowId).classList.toggle('open');
+}
+
+function toggleSub(bodyId, arrowId) {
+  document.getElementById(bodyId).classList.toggle('open');
+  document.getElementById(arrowId).classList.toggle('open');
 }
 
 const toggleMap = {
   'tog-completed':'completed', 'tog-canceled':'canceled',
-  'tog-over5':'over5',         'tog-1to5':'to5',
-  'tog-zero':'zero',           'tog-auto':'auto',
-  'tog-heavy':'heavy',         'tog-nodata':'nodata',
-  'tog-active':'active',       'tog-inactive':'inactive'
+  'tog-over5':'over5', 'tog-1to5':'to5', 'tog-zero':'zero',
+  'tog-auto':'auto', 'tog-heavy':'heavy', 'tog-nodata':'nodata',
+  'tog-active':'active', 'tog-inactive':'inactive'
 };
 Object.entries(toggleMap).forEach(([id, key]) => {
   document.getElementById(id).addEventListener('change', function() {
